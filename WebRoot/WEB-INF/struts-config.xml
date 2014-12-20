@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans />
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings >
+  
+  	<!--获取验证码 -->
+	<action path="/api/getCheckCode" type="cn.mxj.mxjweb.api.GetCheckCode"></action>
+	
+	<!--用户验证 -->
+	<action path="/api/verify" type="cn.mxj.mxjweb.api.Verify"></action>
+	
+	<!--用户注册 -->
+	<action path="/api/register" type="cn.mxj.mxjweb.api.Register"></action>
+	
+	<!--验证码过期 -->
+	<action path="/api/checkCodeExpired" type="cn.mxj.mxjweb.api.CheckCodeExpired"></action>
+	
+	<!--修改密码 -->
+	<action path="/api/editPassword" type="cn.mxj.mxjweb.api.EditPassword"></action>
+  </action-mappings>
+  <message-resources parameter="com.yourcompany.struts.ApplicationResources" />
+</struts-config>
+

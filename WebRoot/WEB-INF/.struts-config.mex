@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/api/getCheckCode.do" location="50,50" dimension="226,84" />
+  <StrutsActivity path="/api/verify.do" location="350,50" dimension="196,84" />
+  <StrutsActivity path="/api/register.do" location="650,50" dimension="202,84" />
+  <StrutsActivity path="/api/checkCodeExpired.do" location="950,50" dimension="250,84" />
+  <StrutsActivity path="/api/editPassword.do" location="50,250" dimension="250,84" />
+</FlowViewLayout>
+

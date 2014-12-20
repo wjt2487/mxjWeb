@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserRegistTemp">
+	<typeAlias alias="userRegistTemp" type="cn.mxj.mxjweb.bean.UserRegistTempBean"/>
+	
+	<resultMap class="userRegistTemp" id="userRegistTemp-result">
+		<result property="id" column="urt_id"/>
+		<result property="account" column="urt_account"/>
+		<result property="msgCheckCode" column="urt_msgcheckcode"/>
+		<result property="sendTime" column="urt_sendtime"/>
+		<result property="validity" column="urt_validity"/>
+		<result property="isdelete" column="urt_isdelete"/>
+		<result property="remark" column="urt_remark"/>
+	</resultMap>
+	
+	<insert id="add" parameterClass="userRegistTemp">
+		INSERT INTO tbl_userregisttemp (
+			urt_account, urt_msgcheckcode, urt_sendtime, urt_validity, urt_isdelete, urt_remark)
+			VALUES (
+			#account#, #msgCheckCode#, now(), #validity#, #isdelete#, #remark#)
+	</insert>
+	
+	<select id="getUserRegistTempByCondition" parameterClass="userRegistTemp" resultMap="userRegistTemp-result">
+		select * from tbl_userregisttemp where urt_account = #account# and urt_msgcheckcode = #msgCheckCode#
+	</select>
+	
+	<update id="update" parameterClass="userRegistTemp">
+		update tbl_userregisttemp set urt_isdelete = 1 where urt_account = #account# and urt_msgcheckcode = #msgCheckCode#
+	</update>
+</sqlMap>

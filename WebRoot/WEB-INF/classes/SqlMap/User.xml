@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="User">
+	<typeAlias alias="user" type="cn.mxj.mxjweb.bean.UserBean"/>
+	
+	<resultMap class="user" id="user-result">
+		<result property="id" column="u_id"/>
+		<result property="account" column="u_account"/>
+		<result property="password" column="u_password"/>
+		<result property="secret" column="u_secret"/>
+		<result property="status" column="u_status"/>
+		<result property="isActive" column="u_isActive"/>
+		<result property="type" column="u_type"/>
+		<result property="registerTime" column="u_registerTime"/>
+		<result property="name" column="u_name"/>
+		<result property="age" column="u_age"/>
+		<result property="sex" column="u_sex"/>
+		<result property="nativePlace" column="u_native"/>
+		<result property="birthday" column="u_birthday"/>
+		<result property="isMarried" column="u_ismarried"/>
+		<result property="isDelete" column="u_isdelete"/>
+		<result property="remark" column="u_remark"/>
+	</resultMap>
+	
+	<select id="getUserByAccount" parameterClass="String" resultMap="user-result">
+		select * from tbl_user where u_account = #account#
+	</select>
+	
+	<insert id="add" parameterClass="user">
+		INSERT INTO tbl_user (
+			u_account,u_password,u_secret,u_status,u_isActive,u_type,u_registerTime,u_name,u_age,u_sex,u_native,u_birthday,u_ismarried,u_isdelete,u_remark)
+			VALUES (
+			#account#,#password#,#secret#,#status#,#isActive#,#type#,now(),#name#,#age#,#sex#,#nativePlace#,#birthday#,#isMarried#,#isDelete#, #remark#)
+	</insert>
+	
+	<update id="updatePassword" parameterClass="map">
+		update tbl_user set u_password = #newPassword#, u_secret = #secret# where u_account = #account# and u_password = #oldPassword#
+	</update>
+</sqlMap>
